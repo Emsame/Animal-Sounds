@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piano</title>
+    <style>
+        body{
+            text-align: center;
+            background: linear-gradient(to bottom,#080835 ,#424279 ) no-repeat fixed;
+            height: 100vh;
+            /* background-color: #080835; */
+            color:#cfcfd6;
+        }
+        h1{
+            font-size: 65px;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        h2{
+            font-size: 40px;
+        }
+        .pic{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+
+        }
+        .sound{
+            font-size: 200px;
+            padding: 20px;
+            margin-right: 70px;
+            cursor: pointer; 
+            transition: transform 0.25s ease,box-shadow 0.25s ease;
+            /* transition: transform ; */
+        }
+
+        .sound:hover{
+            transform: translateY(-6px);
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>Animals and Their Sounds🎹</h1>
+    <h2><strong>Click to hear the sound</strong></h2>
+    <div class="pic">
+        <div class="sound" data-sound="dog">🐶</div>
+        <div class="sound" data-sound="cat">🐱</div>
+        <div class="sound" data-sound="lion">🦁</div>
+        <div class="sound" data-sound="cow">🐮</div>
+        <div class="sound" data-sound="elephant">🐘</div>
+        <div class="sound" data-sound="chicken">🐔</div>
+    </div>
+
+    <audio id="dog" src="free-dog-bark-419014.mp3"></audio>
+    <audio id="cat" src="cat-meow-401729.mp3"></audio>
+    <audio id="lion" src="powerful-lion-roar-sound-effect-high-quality-sfx-444190.mp3"></audio>
+    <audio id="cow" src="cow-mooing-343423.mp3"></audio>
+    <audio id="elephant" src="elephant-triumph-sound-effect-no-copyright-405798.mp3"></audio>
+    <audio id="chicken" src="rooster-crowing_27112016-processed-101724.mp3"></audio>
+
+    <script>
+        const sounds= document.querySelectorAll(".sound")
+        
+        sounds.forEach(function(sound){
+            const data=sound.getAttribute("data-sound")
+            console.log("data"+data)
+            const audio=document.getElementById(data)
+            console.log("audio"+audio)
+            
+            sound.addEventListener("click",function(){
+                audio.currentTime=0
+                audio.play()
+            })
+        })
+    </script>
+</body>
+</html>
